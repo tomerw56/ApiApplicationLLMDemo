@@ -1,0 +1,52 @@
+Here is the updated API definition in XML, with the "NumberOfOwners" field removed:
+
+<API name="car_agency">
+<BaseStructs>
+	<!-- Year structure unchanged -->
+	<Year type="int" max="2100" min="1900" />
+	
+	<Color type="int" type="enum">
+		<enum_value value="green" label="green"/>
+		<enum_value value="gray" label="gray"/>
+		<enum_value value="red" label="red"/>
+	</Color>
+	
+	<Car>
+		<!-- Removed NumberOfOwners -->
+		<Id type="int"/>
+		<ManYear type="Year" />
+		<CarColor type="Color" />
+	</Car>
+	
+	<Client>
+		<Id type="int"/>
+		<name type="str"/>
+	</Client>
+	
+	<Transaction>
+		<CarId type="int"/>
+		<ClientId type="int"/>
+		<Price type="int"/>
+	</Transaction>
+</BaseStructs>
+<Messages>
+	<Message name="GetCarsByColorRequest">
+		<CarColor type="Color" />
+	</Message>
+	<Message name="GetCarsByColorResponse">
+		<CarColor type="list[Car]" />
+	</Message>
+	<Message name="ReportTransaction">
+		<transaction type="Transaction" />
+	</Message>
+	<Message name="GetClientTransactionRequest">
+		<ClientId type="int" />
+	</Message>
+	<Message name="GetClientTransactionResponse">
+		<CarColor type="list[Car]" />
+	</Message>
+	
+</Messages>
+</API>
+
+Note that I removed the "NumberOfOwners" field from the "Car" structure, and also updated the comments to reflect the changes.

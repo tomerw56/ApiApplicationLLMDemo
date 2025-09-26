@@ -1,0 +1,10 @@
+Here is the expanded `GetClientTransactionRequest` message with a color selection:
+
+```xml
+<Message name="GetClientTransactionRequest">
+	<ClientId type="int" />
+	<CarColor type="Color" /> <!-- added CarColor field -->
+</Message>
+```
+
+Note: I added a new `<CarColor>` field to the `GetClientTransactionRequest` message, which will allow clients to specify the color of the cars they are interested in seeing transactions for. The `type` attribute is set to `"Color"` to match the existing `CarColor` type defined earlier in the API definition.

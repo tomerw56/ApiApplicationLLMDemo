@@ -1,0 +1,50 @@
+Here is the modified API definition with the requested changes:
+
+```
+<API name="car_agency">
+<BaseStructs>
+	<!-- Modified Year struct -->
+	<Year type="int" max="1995" min="1950" />
+	<Color type="int" type="enum">
+		<enum_value value="green" label="green"/>
+		<enum_value value="gray" label="gray"/>
+		<enum_value value="red" label="red"/>
+	</Color>
+	<Car>
+		<Id type="int"/>
+		<NumberOfOwners type="int"/>
+		<ManYear type="Year" />
+		<CarColor type="Color" />
+	</Car>
+	<Client>
+		<Id type="int"/>
+		<name type="str"/>
+	</Client>
+	<Transaction>
+		<CarId type="int"/>
+		<ClientId type="int"/>
+		<Price type="int"/>
+	</Transaction>
+</BaseStructs>
+<Messages>
+	<Message name="GetCarsByColorRequest">
+		<CarColor type="Color" />
+	</Message>
+	<Message name="GetCarsByColorResponse">
+		<CarColor type="list[Car]" />
+	</Message>
+	<Message name="ReportTransaction">
+		<transaction type="Transaction" />
+	</Message>
+	<Message name="GetClientTransactionRequest">
+		<ClientId type="int" />
+	</Message>
+	<Message name="GetClientTransactionResponse">
+		<CarColor type="list[Car]" />
+	</Message>
+	
+</Messages>
+</API>
+```
+
+Note that I simply modified the `max` and `min` attributes of the `<Year>` struct to reflect the new range from 1950 to 1995.

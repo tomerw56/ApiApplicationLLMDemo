@@ -1,0 +1,51 @@
+Here is the updated API definition with the new color option "blue":
+
+```
+<API name="car_agency">
+  <!-- Updated BaseStructs -->
+  <BaseStructs>
+    <Year type="int" max="2100" min="1900" />
+    <Color type="int" type="enum">
+      <enum_value value="green" label="green"/>
+      <enum_value value="gray" label="gray"/>
+      <enum_value value="red" label="red"/>
+      <enum_value value="blue" label="blue"/> <!-- New color option -->
+    </Color>
+    <Car>
+      <Id type="int"/>
+      <NumberOfOwners type="int"/>
+      <ManYear type="Year" />
+      <CarColor type="Color" />
+    </Car>
+    <Client>
+      <Id type="int"/>
+      <name type="str"/>
+    </Client>
+    <Transaction>
+      <CarId type="int"/>
+      <ClientId type="int"/>
+      <Price type="int"/>
+    </Transaction>
+  </BaseStructs>
+  <Messages>
+    <!-- No changes to Messages -->
+    <Message name="GetCarsByColorRequest">
+      <CarColor type="Color" />
+    </Message>
+    <Message name="GetCarsByColorResponse">
+      <CarColor type="list[Car]" />
+    </Message>
+    <Message name="ReportTransaction">
+      <transaction type="Transaction" />
+    </Message>
+    <Message name="GetClientTransactionRequest">
+      <ClientId type="int" />
+    </Message>
+    <Message name="GetClientTransactionResponse">
+      <CarColor type="list[Car]" />
+    </Message>
+  </Messages>
+</API>
+```
+
+Note: I did not make any changes to the Messages section, as it seems like the new color option only requires an update to the Color enum in the BaseStructs.

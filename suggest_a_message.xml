@@ -1,0 +1,42 @@
+Here is a suggested request and response to get a car's owner:
+
+**GetCarOwnerRequest**
+```xml
+<Message name="GetCarOwnerRequest">
+    <CarId type="int">123</CarId>
+</Message>
+```
+**GetCarOwnerResponse**
+```xml
+<Message name="GetCarOwnerResponse">
+    <Client>
+        <Id type="int">456</Id>
+        <name type="str">John Doe</name>
+    </Client>
+</Message>
+```
+Note:
+
+* The `GetCarOwnerRequest` message takes a `CarId` as input, which is used to identify the car whose owner we want to retrieve.
+* The `GetCarOwnerResponse` message returns a `Client` struct containing the ID and name of the car's owner.
+
+The updated well-formed XML with the request and response would be:
+```xml
+<API name="car_agency">
+  ...
+  <Messages>
+    <!-- GetCarOwnerRequest -->
+    <Message name="GetCarOwnerRequest">
+      <CarId type="int">123</CarId>
+    </Message>
+    <!-- GetCarOwnerResponse -->
+    <Message name="GetCarOwnerResponse">
+      <Client>
+        <Id type="int">456</Id>
+        <name type="str">John Doe</name>
+      </Client>
+    </Message>
+  </Messages>
+</API>
+```
+Let me know if you have any questions or need further assistance!
