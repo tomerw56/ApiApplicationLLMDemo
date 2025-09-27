@@ -1,6 +1,7 @@
 import asyncio
 import json
 from contextlib import AsyncExitStack
+from pathlib import Path
 from typing import Optional
 
 import ollama
@@ -13,10 +14,23 @@ class OllamaMCPClient:
         self.session: Optional[ClientSession] = None
         self.exit_stack = AsyncExitStack()
 
+    def load_server_config(self,name: str, path="mcp_config.json"):
+        config = json.loads(Path(path).read_text())
+        server_cfg = config["servers"][name]
+
+        if server_cfg["type"] == "stdio":
+            return StdioServerParameters(
+                command=server_cfg["command"],
+                args=server_cfg.get("args", [])
+            )
+        else:
+            raise ValueError(f"Unsupported server type: {server_cfg['type']}")
+
     async def connect_to_server(self):
         """Connect to an MCP server"""
 
-        server_params = StdioServerParameters(command="python", args=["hello_mcp_server.py"])
+        #server_params = StdioServerParameters(command="python", args=["hello_mcp_server.py"])
+        server_params = self.load_server_config("hello")
         stdio_transport = await self.exit_stack.enter_async_context(stdio_client(server_params))
         self.stdio, self.write = stdio_transport
         self.session = await self.exit_stack.enter_async_context(ClientSession(self.stdio, self.write))
