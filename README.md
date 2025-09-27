@@ -21,3 +21,4 @@ swagger docs are on ```http://127.0.0.1:8000/docs```
 #MCP
 look at https://modelcontextprotocol.io/docs/develop/build-client
 mcp demo requires https://github.com/modelcontextprotocol/python-sdk
+I highly recommend you see the _testers/mcp_ sample first

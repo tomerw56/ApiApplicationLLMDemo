@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "API_TOOL": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["api_tool_as_mcp_server.py"]
+    }
+  }
+}
